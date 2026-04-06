@@ -1,79 +1,93 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  font-family: 'Poppins', sans-serif;
+}
+.title {
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
 }
 
-/* Glass container */
-.container {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.08);
-    padding: 35px;
-    border-radius: 20px;
-    backdrop-filter: blur(15px);
-    color: #ffffff;
-    width: 320px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+/* Calculator Container */
+.calculator {
+  background: rgba(30, 30, 47, 0.9);
+  padding: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  width: 320px;
 }
 
-h1 {
-    margin-bottom: 20px;
-    color: #00e5ff;
+/* Display */
+.display {
+  width: 100%;
+  height: 65px;
+  background: #000;
+  color: #00ffcc;
+  font-size: 26px;
+  text-align: right;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  overflow-x: auto;
+  letter-spacing: 1px;
 }
 
-/* Timer display */
-#display {
-    font-size: 40px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    color: #ffffff;
-    letter-spacing: 2px;
+/* Buttons Grid */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 
-/* Buttons */
-.buttons button {
-    margin: 6px;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s ease;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+/* Buttons Base */
+button {
+  padding: 15px;
+  font-size: 18px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: bold;
 }
 
-/* Hover effect */
-.buttons button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(255,255,255,0.4);
+/* Hover Effect */
+button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
 }
 
-/* Neon colors */
-button:nth-child(1) { background: #00e676; color: #000; }   /* Start */
-button:nth-child(2) { background: #ffd600; color: #000; }   /* Pause */
-button:nth-child(3) { background: #ff1744; color: white; }  /* Reset */
-button:nth-child(4) { background: #2979ff; color: white; }  /* Lap */
-
-/* Lap list */
-#laps {
-    margin-top: 20px;
-    max-height: 150px;
-    overflow-y: auto;
-    text-align: left;
+/* Number Buttons */
+.num {
+  background: #2d2d44;
+  color: #fff;
 }
 
-/* Lap items */
-#laps li {
-    padding: 6px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    color: #e0f7fa;
+/* Operators */
+.op {
+  background: linear-gradient(45deg, #ff7e5f, #feb47b);
+  color: #fff;
+}
+
+/* Equal Button */
+.equal {
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  color: #fff;
+  grid-column: span 2;
+}
+
+/* Clear Button */
+.clear {
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  color: #fff;
 }

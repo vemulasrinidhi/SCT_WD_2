@@ -1,60 +1,68 @@
-let timer;
-let isRunning = false;
-let milliseconds = 0;
-let seconds = 0;
-let minutes = 0;
+// Get display
+let display = document.getElementById("display");
 
-function updateDisplay() {
-    let ms = milliseconds.toString().padStart(2, "0");
-    let sec = seconds.toString().padStart(2, "0");
-    let min = minutes.toString().padStart(2, "0");
+// Select all buttons
+let buttons = document.querySelectorAll("button");
 
-    document.getElementById("display").innerText =
-        `${min}:${sec}:${ms}`;
+// Add click event to all buttons
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    handleInput(button.innerText);
+  });
+});
+
+// Handle button input
+function handleInput(value) {
+  if (value === "C") {
+    clearDisplay();
+  } 
+  else if (value === "=") {
+    calculate();
+  } 
+  else {
+    appendValue(value);
+  }
 }
 
-function start() {
-    if (!isRunning) {
-        isRunning = true;
-
-        timer = setInterval(() => {
-            milliseconds++;
-
-            if (milliseconds === 100) {
-                milliseconds = 0;
-                seconds++;
-            }
-
-            if (seconds === 60) {
-                seconds = 0;
-                minutes++;
-            }
-
-            updateDisplay();
-        }, 10);
-    }
+// Append values
+function appendValue(value) {
+  if (display.innerText === "0") {
+    display.innerText = value;
+  } else {
+    display.innerText += value;
+  }
 }
 
-function pause() {
-    clearInterval(timer);
-    isRunning = false;
+// Clear display
+function clearDisplay() {
+  display.innerText = "0";
 }
 
-function reset() {
-    clearInterval(timer);
-    isRunning = false;
-    milliseconds = 0;
-    seconds = 0;
-    minutes = 0;
-    updateDisplay();
-    document.getElementById("laps").innerHTML = "";
+// Calculate result
+function calculate() {
+  try {
+    let expression = display.innerText
+      .replace(/×/g, "*")
+      .replace(/÷/g, "/");
+
+    display.innerText = eval(expression);
+  } catch (error) {
+    display.innerText = "Error";
+  }
 }
 
-function lap() {
-    if (isRunning) {
-        const lapTime = document.getElementById("display").innerText;
-        const li = document.createElement("li");
-        li.innerText = lapTime;
-        document.getElementById("laps").appendChild(li);
-    }
-}
+// Keyboard support
+document.addEventListener("keydown", function (e) {
+  if (!isNaN(e.key) || ['+', '-', '*', '/', '.'].includes(e.key)) {
+    appendValue(e.key);
+  } 
+  else if (e.key === "Enter") {
+    calculate();
+  } 
+  else if (e.key === "Backspace") {
+    display.innerText = display.innerText.slice(0, -1) || "0";
+  } 
+  else if (e.key.toLowerCase() === "c") {
+    clearDisplay();
+  }
+});
