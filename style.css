@@ -18,7 +18,6 @@ body {
   margin-bottom: 10px;
 }
 
-/* Calculator Container */
 .calculator {
   background: rgba(30, 30, 47, 0.9);
   padding: 20px;
@@ -28,7 +27,7 @@ body {
   width: 320px;
 }
 
-/* Display */
+
 .display {
   width: 100%;
   height: 65px;
@@ -43,14 +42,13 @@ body {
   letter-spacing: 1px;
 }
 
-/* Buttons Grid */
 .buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
 
-/* Buttons Base */
+
 button {
   padding: 15px;
   font-size: 18px;
@@ -61,32 +59,30 @@ button {
   font-weight: bold;
 }
 
-/* Hover Effect */
+
 button:hover {
   transform: scale(1.08);
   box-shadow: 0 0 10px rgba(255,255,255,0.2);
 }
 
-/* Number Buttons */
+
 .num {
   background: #2d2d44;
   color: #fff;
 }
 
-/* Operators */
+
 .op {
   background: linear-gradient(45deg, #ff7e5f, #feb47b);
   color: #fff;
 }
 
-/* Equal Button */
 .equal {
   background: linear-gradient(45deg, #00c6ff, #0072ff);
   color: #fff;
   grid-column: span 2;
 }
 
-/* Clear Button */
 .clear {
   background: linear-gradient(45deg, #ff416c, #ff4b2b);
   color: #fff;

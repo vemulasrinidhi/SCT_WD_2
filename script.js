@@ -1,17 +1,17 @@
-// Get display
+
 let display = document.getElementById("display");
 
-// Select all buttons
+
 let buttons = document.querySelectorAll("button");
 
-// Add click event to all buttons
+
 buttons.forEach(button => {
   button.addEventListener("click", () => {
     handleInput(button.innerText);
   });
 });
 
-// Handle button input
+
 function handleInput(value) {
   if (value === "C") {
     clearDisplay();
